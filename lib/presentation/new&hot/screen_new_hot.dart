@@ -1,8 +1,13 @@
 import 'package:flix/core/colors.dart';
 import 'package:flix/core/constants.dart';
 import 'package:flix/presentation/new&hot/widgets/comming_soon.dart';
+import 'package:flix/presentation/new&hot/widgets/every_ones_watching.dart';
+
+
 import 'package:flix/presentation/widgets_common/topbar.dart';
 import 'package:flutter/material.dart';
+
+
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({Key? key}) : super(key: key);
@@ -32,7 +37,7 @@ class ScreenNewAndHot extends StatelessWidget {
                     text: "👀 Everyone's Watching",
                   )
                 ]),
-          ),Expanded(child: TabBarView(children: [SreenCommingSoon(),Center(child: Text("2"))]))
+          ),Expanded(child: TabBarView(children: [SreenCommingSoon(),EveryOnesWatching()]))
         ]),
       ),
     );

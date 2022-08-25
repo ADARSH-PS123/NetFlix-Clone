@@ -84,7 +84,7 @@ class SreenCommingSoon extends StatelessWidget {
                         CustomIcons(icon: Icons.info, text: "info")
                       ],
                     ),
-                    Text(
+                   const Text(
                       "Comming on Friday",
                       style: TextStyle(
                           color: Colors.grey,
@@ -92,7 +92,7 @@ class SreenCommingSoon extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     height,
-                    Text(
+                    const Text(
                       "Tall Girl 2",
                       style: TextStyle(
                           color: Colors.white,
