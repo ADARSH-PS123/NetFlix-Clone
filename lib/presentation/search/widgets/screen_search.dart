@@ -7,6 +7,6 @@ class ScreenSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:ScreenSearchIdle());
+    return Scaffold(body:ListViews());
   }
 }

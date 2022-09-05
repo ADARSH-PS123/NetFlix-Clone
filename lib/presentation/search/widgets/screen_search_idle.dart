@@ -1,9 +1,15 @@
 import 'package:flix/core/constants.dart';
+import 'package:flix/domain/core/apiEndPoints.dart';
+import 'package:flix/domain/core/strings.dart';
 import 'package:flix/presentation/downloads/widgets/screen_downloads.dart';
 import 'package:flix/presentation/widgets_common/search_about.dart';
 import 'package:flix/presentation/search/widgets/search_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../application/download/downloads_bloc.dart';
+import '../../../application/search_bloc/search_bloc.dart';
 
 class ScreenSearchIdle extends StatelessWidget {
   const ScreenSearchIdle({Key? key}) : super(key: key);
@@ -15,7 +21,8 @@ class ScreenSearchIdle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CupertinoTextField(style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+          CupertinoTextField(
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             prefix: const Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Icon(
@@ -42,65 +49,74 @@ class ScreenSearchIdle extends StatelessWidget {
           kheight2,
           WidgetAbout(text: "Movies & TV"),
           kheight2,
-          Expanded(child:SearchGrid() )
+          Expanded(child: SearchGrid())
         ],
       ),
     );
   }
 }
 
-
+//this is idle widget
 class ListViews extends StatelessWidget {
   const ListViews({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return ListView.separated(
-        shrinkWrap: true,
-        itemBuilder: (cxt, index) => ScreenListTile(),
-        separatorBuilder: (cxt, index) => SizedBox(
-              height: 7,
-            ),
-        itemCount: 100);
+WidgetsBinding.instance.addPostFrameCallback((timeStamp){
+    BlocProvider.of<DownloadsBloc>(context)
+          .add( const DownloadsEvent.getDownloadImages());
+});
+    return BlocBuilder<SearchBloc, SearchState>(
+      builder: (context, state) {
+         
+          return   ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (cxt, index) => ScreenListTile(),
+            separatorBuilder: (cxt, index) => const SizedBox(
+                  height: 7,
+                ),
+            itemCount: 100);
+        }
+       
+       
+      
+    );
   }
 }
 
-
 class ScreenListTile extends StatelessWidget {
-  const ScreenListTile({Key? key}) : super(key: key);
+ 
+   ScreenListTile({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size=MediaQuery.of(context).size;
-    return
-    Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-              margin: EdgeInsets.only(right: 9),
-                    height: size.height * .085,
-                    width: size.width * .24,
-                    decoration: BoxDecoration(
-                      
-                       image: DecorationImage(image: NetworkImage(posters[0]),fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(4))),
-             const   Expanded(
-                  child: Text(
-                    "Textbhghgggcbvcb",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8,right: 12),
-                  child: Icon(
-                    CupertinoIcons.play_circle,
-                    color: Colors.white,
-                    size: 32,
-                  ),
-                )
-              ],
-            );
+    final size = MediaQuery.of(context).size;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+            margin: EdgeInsets.only(right: 9),
+            height: size.height * .085,
+            width: size.width * .24,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(posters[0]), fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(4))),
+         Expanded(
+          child: Text(
+           "sksjsjs",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 8, right: 12),
+          child: Icon(
+            CupertinoIcons.play_circle,
+            color: Colors.white,
+            size: 32,
+          ),
+        )
+      ],
+    );
   }
 }
