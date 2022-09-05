@@ -37,7 +37,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         return SearchState(
             isLoading: false, error: false, searchList: [], idleList: download);
       });
-      print("=============================");
+    
       print(data);
       emit(data);
     });
