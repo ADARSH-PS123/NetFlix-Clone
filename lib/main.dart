@@ -1,4 +1,5 @@
-import 'package:flix/application/bloc/downloads_bloc.dart';
+import 'package:flix/application/download/downloads_bloc.dart';
+import 'package:flix/application/search_bloc/search_bloc.dart';
 import 'package:flix/core/colors.dart';
 import 'package:flix/domain/core/di.dart';
 import 'package:flix/presentation/main_page/widgets/main_page.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (cxt)=>
          getIt<DownloadsBloc>()
-      )],
+      ),BlocProvider(create: (cxt)=>getIt<SearchBloc>())
+      ],
       child: MaterialApp(
           theme: ThemeData(
               fontFamily: GoogleFonts.montserrat().fontFamily,

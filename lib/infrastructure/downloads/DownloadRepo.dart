@@ -21,16 +21,17 @@ class Repo implements DownloadRepo{
     final downloadList= (response.data['results'] as List).map((e){
         return Download.fromJson(e);
       } ).toList();
-    
+     
    
       return  Right(downloadList );
+     
     }
     else{
       return const Left(MainFailure.serverFailure());
     }
   }
   catch(e){
-print(e);
+
     return const Left(MainFailure.clinrFailure());
   }
   }

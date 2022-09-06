@@ -1,13 +1,15 @@
 import 'dart:math';
 
 import 'package:dartz/dartz.dart';
-import 'package:flix/application/bloc/downloads_bloc.dart';
+import 'package:flix/application/download/downloads_bloc.dart';
 import 'package:flix/core/constants.dart';
 import 'package:flix/domain/core/mainFailures.dart';
 import 'package:flix/domain/core/strings.dart';
 import 'package:flix/presentation/widgets_common/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+
 
 final posters = [
   'https://www.kerala9.com/wp-content/uploads/2022/04/nna-thaan-case-kodu-movie-poster.jpg',
