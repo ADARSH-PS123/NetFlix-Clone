@@ -9,7 +9,7 @@ import 'package:flix/presentation/widgets_common/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../application/search_bloc/search_bloc.dart';
+
 
 final posters = [
   'https://www.kerala9.com/wp-content/uploads/2022/04/nna-thaan-case-kodu-movie-poster.jpg',

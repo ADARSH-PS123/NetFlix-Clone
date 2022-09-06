@@ -26,6 +26,6 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i5.DownloadsBloc(get<_i3.DownloadRepo>()));
   gh.lazySingleton<_i6.ISearchRepo>(() => _i7.SearchRepo());
   gh.factory<_i8.SearchBloc>(
-      () => _i8.SearchBloc(get<_i3.DownloadRepo>(), get<_i7.SearchRepo>()));
+      () => _i8.SearchBloc(get<_i3.DownloadRepo>(), get<_i6.ISearchRepo>()));
   return get;
 }

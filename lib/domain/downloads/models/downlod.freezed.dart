@@ -22,7 +22,9 @@ Download _$DownloadFromJson(Map<String, dynamic> json) {
 mixin _$Download {
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
-  @JsonKey(name: "name")
+  @JsonKey(name: "original_name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_title")
   String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,8 @@ abstract class $DownloadCopyWith<$Res> {
       _$DownloadCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: "poster_path") String? posterPath,
-      @JsonKey(name: "name") String? title});
+      @JsonKey(name: "original_name") String? name,
+      @JsonKey(name: "original_title") String? title});
 }
 
 /// @nodoc
@@ -51,12 +54,17 @@ class _$DownloadCopyWithImpl<$Res> implements $DownloadCopyWith<$Res> {
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? name = freezed,
     Object? title = freezed,
   }) {
     return _then(_value.copyWith(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       title: title == freezed
           ? _value.title
@@ -74,7 +82,8 @@ abstract class _$$_DownloadCopyWith<$Res> implements $DownloadCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(name: "poster_path") String? posterPath,
-      @JsonKey(name: "name") String? title});
+      @JsonKey(name: "original_name") String? name,
+      @JsonKey(name: "original_title") String? title});
 }
 
 /// @nodoc
@@ -90,12 +99,17 @@ class __$$_DownloadCopyWithImpl<$Res> extends _$DownloadCopyWithImpl<$Res>
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? name = freezed,
     Object? title = freezed,
   }) {
     return _then(_$_Download(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       title: title == freezed
           ? _value.title
@@ -110,7 +124,8 @@ class __$$_DownloadCopyWithImpl<$Res> extends _$DownloadCopyWithImpl<$Res>
 class _$_Download implements _Download {
   const _$_Download(
       {@JsonKey(name: "poster_path") required this.posterPath,
-      @JsonKey(name: "name") required this.title});
+      @JsonKey(name: "original_name") required this.name,
+      @JsonKey(name: "original_title") required this.title});
 
   factory _$_Download.fromJson(Map<String, dynamic> json) =>
       _$$_DownloadFromJson(json);
@@ -119,12 +134,15 @@ class _$_Download implements _Download {
   @JsonKey(name: "poster_path")
   final String? posterPath;
   @override
-  @JsonKey(name: "name")
+  @JsonKey(name: "original_name")
+  final String? name;
+  @override
+  @JsonKey(name: "original_title")
   final String? title;
 
   @override
   String toString() {
-    return 'Download(posterPath: $posterPath, title: $title)';
+    return 'Download(posterPath: $posterPath, name: $name, title: $title)';
   }
 
   @override
@@ -134,6 +152,7 @@ class _$_Download implements _Download {
             other is _$_Download &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.title, title));
   }
 
@@ -142,6 +161,7 @@ class _$_Download implements _Download {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(posterPath),
+      const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(title));
 
   @JsonKey(ignore: true)
@@ -159,8 +179,10 @@ class _$_Download implements _Download {
 
 abstract class _Download implements Download {
   const factory _Download(
-      {@JsonKey(name: "poster_path") required final String? posterPath,
-      @JsonKey(name: "name") required final String? title}) = _$_Download;
+          {@JsonKey(name: "poster_path") required final String? posterPath,
+          @JsonKey(name: "original_name") required final String? name,
+          @JsonKey(name: "original_title") required final String? title}) =
+      _$_Download;
 
   factory _Download.fromJson(Map<String, dynamic> json) = _$_Download.fromJson;
 
@@ -168,7 +190,10 @@ abstract class _Download implements Download {
   @JsonKey(name: "poster_path")
   String? get posterPath;
   @override
-  @JsonKey(name: "name")
+  @JsonKey(name: "original_name")
+  String? get name;
+  @override
+  @JsonKey(name: "original_title")
   String? get title;
   @override
   @JsonKey(ignore: true)

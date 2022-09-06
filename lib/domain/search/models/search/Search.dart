@@ -27,13 +27,13 @@ class SearchResp {
 @JsonSerializable()
 class SearchResultData {
   /// The generated code assumes these values exist in JSON.
-@JsonKey(name: 'id')   final String id ;
+
 @JsonKey(name: 'original_title')   final String title ;
 @JsonKey(name: 'poster_path')   final String posterPath ;
 
  
 
-  SearchResultData({required this.id, required this.title, required this.posterPath});
+  SearchResultData({ required this.title, required this.posterPath});
 
   /// Connect the generated [_$SearchResultDataFromJson] function to the `fromJson`
   /// factory.

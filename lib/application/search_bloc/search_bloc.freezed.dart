@@ -19,38 +19,38 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() search,
+    required TResult Function(String query) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(_search value) search,
+    required TResult Function(SearchMovieEvent value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() search,
+    required TResult Function(String query) search,
   }) {
     return initialize();
   }
@@ -122,7 +122,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
   }) {
     return initialize?.call();
   }
@@ -131,7 +131,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -144,7 +144,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(_search value) search,
+    required TResult Function(SearchMovieEvent value) search,
   }) {
     return initialize(this);
   }
@@ -153,7 +153,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
   }) {
     return initialize?.call(this);
   }
@@ -162,7 +162,7 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -177,67 +177,94 @@ abstract class _initialize implements SearchEvent {
 }
 
 /// @nodoc
-abstract class _$$_searchCopyWith<$Res> {
-  factory _$$_searchCopyWith(_$_search value, $Res Function(_$_search) then) =
-      __$$_searchCopyWithImpl<$Res>;
+abstract class _$$SearchMovieEventCopyWith<$Res> {
+  factory _$$SearchMovieEventCopyWith(
+          _$SearchMovieEvent value, $Res Function(_$SearchMovieEvent) then) =
+      __$$SearchMovieEventCopyWithImpl<$Res>;
+  $Res call({String query});
 }
 
 /// @nodoc
-class __$$_searchCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
-    implements _$$_searchCopyWith<$Res> {
-  __$$_searchCopyWithImpl(_$_search _value, $Res Function(_$_search) _then)
-      : super(_value, (v) => _then(v as _$_search));
+class __$$SearchMovieEventCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$SearchMovieEventCopyWith<$Res> {
+  __$$SearchMovieEventCopyWithImpl(
+      _$SearchMovieEvent _value, $Res Function(_$SearchMovieEvent) _then)
+      : super(_value, (v) => _then(v as _$SearchMovieEvent));
 
   @override
-  _$_search get _value => super._value as _$_search;
+  _$SearchMovieEvent get _value => super._value as _$SearchMovieEvent;
+
+  @override
+  $Res call({
+    Object? query = freezed,
+  }) {
+    return _then(_$SearchMovieEvent(
+      query: query == freezed
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_search implements _search {
-  const _$_search();
+class _$SearchMovieEvent implements SearchMovieEvent {
+  const _$SearchMovieEvent({required this.query});
+
+  @override
+  final String query;
 
   @override
   String toString() {
-    return 'SearchEvent.search()';
+    return 'SearchEvent.search(query: $query)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_search);
+        (other.runtimeType == runtimeType &&
+            other is _$SearchMovieEvent &&
+            const DeepCollectionEquality().equals(other.query, query));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$SearchMovieEventCopyWith<_$SearchMovieEvent> get copyWith =>
+      __$$SearchMovieEventCopyWithImpl<_$SearchMovieEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() search,
+    required TResult Function(String query) search,
   }) {
-    return search();
+    return search(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
   }) {
-    return search?.call();
+    return search?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? search,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) {
     if (search != null) {
-      return search();
+      return search(query);
     }
     return orElse();
   }
@@ -246,7 +273,7 @@ class _$_search implements _search {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(_search value) search,
+    required TResult Function(SearchMovieEvent value) search,
   }) {
     return search(this);
   }
@@ -255,7 +282,7 @@ class _$_search implements _search {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
   }) {
     return search?.call(this);
   }
@@ -264,7 +291,7 @@ class _$_search implements _search {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(_search value)? search,
+    TResult Function(SearchMovieEvent value)? search,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -274,8 +301,14 @@ class _$_search implements _search {
   }
 }
 
-abstract class _search implements SearchEvent {
-  const factory _search() = _$_search;
+abstract class SearchMovieEvent implements SearchEvent {
+  const factory SearchMovieEvent({required final String query}) =
+      _$SearchMovieEvent;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchMovieEventCopyWith<_$SearchMovieEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

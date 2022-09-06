@@ -8,11 +8,13 @@ part of 'downlod.dart';
 
 _$_Download _$$_DownloadFromJson(Map<String, dynamic> json) => _$_Download(
       posterPath: json['poster_path'] as String?,
-      title: json['name'] as String?,
+      name: json['original_name'] as String?,
+      title: json['original_title'] as String?,
     );
 
 Map<String, dynamic> _$$_DownloadToJson(_$_Download instance) =>
     <String, dynamic>{
       'poster_path': instance.posterPath,
-      'name': instance.title,
+      'original_name': instance.name,
+      'original_title': instance.title,
     };
