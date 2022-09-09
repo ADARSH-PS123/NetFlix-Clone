@@ -1,2 +1,2 @@
-const baseUrl="https://api.themoviedb.org/3/";
-const imageBaseUrl="https://image.tmdb.org/t/p/original";
+const baseUrl = "https://api.themoviedb.org/3/";
+const imageBaseUrl = "https://image.tmdb.org/t/p/original";

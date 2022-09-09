@@ -12,8 +12,9 @@ class EveryOnesWatching extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ListView(
-      children:List.generate(10,(index){
-return Column(crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(10, (index) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           height,
           Text(
@@ -28,7 +29,9 @@ return Column(crossAxisAlignment: CrossAxisAlignment.start,
           Text(
             "After Jodi Kreyman gains popularity, her miscommuni-  cations start causing rifts with those around her and now she really needs to 'stand tall'.",
             style: TextStyle(color: Colors.grey, fontSize: 12),
-          ),kheight2,kheight2,
+          ),
+          kheight2,
+          kheight2,
           Stack(
             children: [
               SizedBox(
@@ -46,7 +49,11 @@ return Column(crossAxisAlignment: CrossAxisAlignment.start,
                     radius: 17,
                     backgroundColor: backgroundColor,
                     child: IconButton(
-                        onPressed: () {}, icon: Icon(CupertinoIcons.volume_off,size: 17,))),
+                        onPressed: () {},
+                        icon: Icon(
+                          CupertinoIcons.volume_off,
+                          size: 17,
+                        ))),
               ),
             ],
           ),
@@ -54,29 +61,23 @@ return Column(crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacer(),
               GestureDetector(
-                child:
-                    CustomIcons(icon: CupertinoIcons.share_solid, text: "Share"),
+                child: CustomIcons(
+                    icon: CupertinoIcons.share_solid, text: "Share"),
                 onTap: () {},
               ),
-                   GestureDetector(
-                child:
-                    CustomIcons(icon: CupertinoIcons.add, text: "Add"),
+              GestureDetector(
+                child: CustomIcons(icon: CupertinoIcons.add, text: "Add"),
                 onTap: () {},
               ),
-                   GestureDetector(
-                child:
-                    CustomIcons(icon: CupertinoIcons.play_arrow_solid, text: "Play"),
+              GestureDetector(
+                child: CustomIcons(
+                    icon: CupertinoIcons.play_arrow_solid, text: "Play"),
                 onTap: () {},
               )
             ],
           )
         ],
       );
-
-
-      })
-      
-       
-    );
+    }));
   }
 }

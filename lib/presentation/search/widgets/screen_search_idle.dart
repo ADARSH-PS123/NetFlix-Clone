@@ -1,4 +1,3 @@
-
 import 'package:flix/application/search_bloc/search_bloc.dart';
 import 'package:flix/core/constants.dart';
 
@@ -12,20 +11,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenSearchIdle extends StatefulWidget {
-   ScreenSearchIdle({Key? key}) : super(key: key);
+  ScreenSearchIdle({Key? key}) : super(key: key);
 
   @override
   State<ScreenSearchIdle> createState() => _ScreenSearchIdleState();
 }
 
 class _ScreenSearchIdleState extends State<ScreenSearchIdle> {
-   //debouncer will provide a delay while using text field
-   final _debouncer = Debouncer(milliseconds: 700);
+  //debouncer will provide a delay while using text field
+  final _debouncer = Debouncer(milliseconds: 700);
 
   @override
-    
   Widget build(BuildContext context) {
-     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       BlocProvider.of<SearchBloc>(context).add(const SearchEvent.initialize());
     });
     return BlocBuilder<SearchBloc, SearchState>(
@@ -36,22 +34,21 @@ class _ScreenSearchIdleState extends State<ScreenSearchIdle> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CupertinoTextField(
-                onChanged: (query) async{
+                onChanged: (query) async {
                   _debouncer.run(() {
-                    if(query.isEmpty){
-           
-                    BlocProvider.of<SearchBloc>(context).add(const SearchEvent.initialize());
-                  }
-                  else{
-                  BlocProvider.of<SearchBloc>(context)
-                      .add(SearchMovieEvent(query: query));}
+                    if (query.isEmpty) {
+                      BlocProvider.of<SearchBloc>(context)
+                          .add(const SearchEvent.initialize());
+                    } else {
+                      BlocProvider.of<SearchBloc>(context)
+                          .add(SearchMovieEvent(query: query));
+                    }
                   });
-                  
                 },
                 style: const TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold),
                 prefix: const Padding(
-                  padding:  EdgeInsets.only(left: 8.0),
+                  padding: EdgeInsets.only(left: 8.0),
                   child: Icon(
                     CupertinoIcons.search,
                     color: Colors.white30,
@@ -76,7 +73,8 @@ class _ScreenSearchIdleState extends State<ScreenSearchIdle> {
               ),
               kheight2,
               const WidgetAbout(text: "Movies & TV"),
-              kheight2,Expanded(child: ListViews())
+              kheight2,
+              Expanded(child: ListViews())
             ],
           ),
         );
@@ -91,14 +89,13 @@ class ListViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
-
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        if(state.searchList.isNotEmpty){
-          return SearchGrid(resultList: state.searchList,);
-        }
-        else if (state.idleList.isNotEmpty) {
+        if (state.searchList.isNotEmpty) {
+          return SearchGrid(
+            resultList: state.searchList,
+          );
+        } else if (state.idleList.isNotEmpty) {
           return ListView.separated(
               shrinkWrap: true,
               itemBuilder: (cxt, index) => ScreenListTile(
