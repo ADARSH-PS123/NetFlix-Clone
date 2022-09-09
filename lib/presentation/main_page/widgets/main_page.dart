@@ -12,41 +12,54 @@ import 'package:flutter/src/widgets/framework.dart';
 ValueNotifier<int> notifierNavIndex = ValueNotifier(0);
 
 class Main_Page extends StatelessWidget {
-   Main_Page({Key? key}) : super(key: key);
-final screens=[ScreenHome(),ScreenNewAndHot(),ScreenFastLaughs(),ScreenSearch(),ScreenDownloads()];
+  Main_Page({Key? key}) : super(key: key);
+  final screens = [
+    ScreenHome(),
+    ScreenNewAndHot(),
+    ScreenFastLaughs(),
+    ScreenSearch(),
+    ScreenDownloads()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-      body: ValueListenableBuilder(builder: (BuildContext cot,int index,_){
-      return  screens[index];
-      },valueListenable: notifierNavIndex,),
-      bottomNavigationBar:ValueListenableBuilder(builder:(BuildContext cnt,newIndex,_){
-        return  BottomNavigationBar(
-         backgroundColor: backgroundColor,type:BottomNavigationBarType.fixed,
-          currentIndex: notifierNavIndex.value,
-          onTap: (index) {
-            notifierNavIndex.value = index;
+        body: ValueListenableBuilder(
+          builder: (BuildContext cot, int index, _) {
+            return screens[index];
           },
-          showUnselectedLabels: true,
-          selectedFontSize: 12,
-          unselectedFontSize: 10,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.collections,
-                ),
-                label: "New & Hot"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.emoji_emotions), label: "Fast Laughs"),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.download), label: "Downloads")
-          ]);
-      } ,valueListenable: notifierNavIndex,)
-    );
+          valueListenable: notifierNavIndex,
+        ),
+        bottomNavigationBar: ValueListenableBuilder(
+          builder: (BuildContext cnt, newIndex, _) {
+            return BottomNavigationBar(
+                backgroundColor: backgroundColor,
+                type: BottomNavigationBarType.fixed,
+                currentIndex: notifierNavIndex.value,
+                onTap: (index) {
+                  notifierNavIndex.value = index;
+                },
+                showUnselectedLabels: true,
+                selectedFontSize: 12,
+                unselectedFontSize: 10,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.grey,
+                items: [
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.home), label: "Home"),
+                  BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.collections,
+                      ),
+                      label: "New & Hot"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.emoji_emotions), label: "Fast Laughs"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.search), label: "Search"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.download), label: "Downloads")
+                ]);
+          },
+          valueListenable: notifierNavIndex,
+        ));
   }
 }

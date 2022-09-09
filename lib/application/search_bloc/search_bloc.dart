@@ -50,7 +50,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }
     });
     on<SearchMovieEvent>((event, emit) async {
-      emit(SearchState(isLoading: true, error: false, searchList: [], idleList: []));
+      emit(SearchState(
+          isLoading: true, error: false, searchList: [], idleList: []));
       final Either<MainFailure, SearchResp> searchRepoOptions =
           await iSearchRepo.getSearchResults(query: event.query);
 

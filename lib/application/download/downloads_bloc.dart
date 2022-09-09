@@ -1,5 +1,3 @@
-
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flix/domain/core/mainFailures.dart';
@@ -18,21 +16,21 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final DownloadRepo repo;
   DownloadsBloc(this.repo) : super(DownloadsState.initial()) {
     on<_GetDownloadImages>((event, emit) async {
-      if(state.downloads.isNotEmpty){return;}
-     
+      if (state.downloads.isNotEmpty) {
+        return;
+      } else {
+        emit(state.copyWith(isLoading: true, optonFailureSuccess: none()));
+        final Either<MainFailure, List<Download>> repoOptions =
+            await repo.getDownloadImages();
 
-else{
-   emit(state.copyWith(isLoading: true, optonFailureSuccess: none()));
-      final Either<MainFailure, List<Download>> repoOptions =
-          await repo.getDownloadImages();  
-
-   emit(repoOptions.fold(
-          (failure) => state.copyWith(
-              isLoading: false, optonFailureSuccess: Some(Left(failure))),
-          (success) => state.copyWith(downloads: success,
-              isLoading: false, optonFailureSuccess: Some(Right(success)))));
-}
-     
+        emit(repoOptions.fold(
+            (failure) => state.copyWith(
+                isLoading: false, optonFailureSuccess: Some(Left(failure))),
+            (success) => state.copyWith(
+                downloads: success,
+                isLoading: false,
+                optonFailureSuccess: Some(Right(success)))));
+      }
     });
   }
 }

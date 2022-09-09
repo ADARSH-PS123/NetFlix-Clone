@@ -84,7 +84,7 @@ class SreenCommingSoon extends StatelessWidget {
                         CustomIcons(icon: Icons.info, text: "info")
                       ],
                     ),
-                   const Text(
+                    const Text(
                       "Comming on Friday",
                       style: TextStyle(
                           color: Colors.grey,
@@ -104,7 +104,8 @@ class SreenCommingSoon extends StatelessWidget {
                     Text(
                       "After Jodi Kreyman gains popularity, her miscommuni-  cations start causing rifts with those around her and now she really needs to 'stand tall'.",
                       style: TextStyle(color: Colors.grey, fontSize: 12),
-                    ),height
+                    ),
+                    height
                   ],
                 ))
           ],

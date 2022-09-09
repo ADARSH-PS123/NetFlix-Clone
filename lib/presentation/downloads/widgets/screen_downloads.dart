@@ -9,8 +9,6 @@ import 'package:flix/presentation/widgets_common/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
 final posters = [
   'https://www.kerala9.com/wp-content/uploads/2022/04/nna-thaan-case-kodu-movie-poster.jpg',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTevST-wklZlPCowJgEMJTG0nh2EQvj1MiwNA&usqp=CAU',
@@ -38,9 +36,11 @@ class ScreenDownloads extends StatelessWidget {
           ),
           body: ListView(
             children: [
-              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  height,kheight2,
+                  height,
+                  kheight2,
                   Row(
                     children: const [
                       Icon(
@@ -60,8 +60,9 @@ class ScreenDownloads extends StatelessWidget {
                       )
                     ],
                   ),
-                  kheight2,kheight2,height,
-            
+                  kheight2,
+                  kheight2,
+                  height,
                   const Center(
                     child: Text(
                       "Introducing Downloads for You",
@@ -75,9 +76,10 @@ class ScreenDownloads extends StatelessWidget {
                         style: TextStyle(color: Colors.grey),
                         "We'll download a personosed section of\n   movies and shows for you, so there's\n    always something to watch on your\n                             device"),
                   ),
-                  kheight2,kheight2,
+                  kheight2,
+                  kheight2,
                   const Section2(),
-                 kheight2,
+                  kheight2,
                   const Section3()
                 ],
               )
@@ -96,13 +98,10 @@ class Section2 extends StatelessWidget {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloadImages());
     });
-    
 
     final size = MediaQuery.of(context).size;
     return BlocBuilder<DownloadsBloc, DownloadsState>(
       builder: (context, state) {
-       
-    
         return Stack(
           alignment: Alignment.topCenter,
           children: [
@@ -119,11 +118,14 @@ class Section2 extends StatelessWidget {
                       : Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              image:  DecorationImage(
-                                  image:state.optonFailureSuccess== Some(Left(MainFailure.clinrFailure()))?
-                                   const AssetImage("assets/images/flixlogo.jpeg") as ImageProvider:  NetworkImage(
-                                   "$imageBaseUrl${state.downloads[1].posterPath}"
-                                        )  ,
+                              image: DecorationImage(
+                                  image: state.optonFailureSuccess ==
+                                          Some(Left(MainFailure.clinrFailure()))
+                                      ? const AssetImage(
+                                              "assets/images/flixlogo.jpeg")
+                                          as ImageProvider
+                                      : NetworkImage(
+                                          "$imageBaseUrl${state.downloads[1].posterPath}"),
                                   fit: BoxFit.fill)),
                           height: size.width * .32,
                           width: size.width * .25,
@@ -138,15 +140,13 @@ class Section2 extends StatelessWidget {
                     : Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            image:
-                            DecorationImage(
-                       
-                                image:  state.optonFailureSuccess==Some(Left(MainFailure.clinrFailure())) ?
-                            AssetImage("assets/images/flixlogo.jpeg") as ImageProvider:
-                              NetworkImage(
-                                        "$imageBaseUrl${state.downloads[0].posterPath}")
-
-                                    , 
+                            image: DecorationImage(
+                                image: state.optonFailureSuccess ==
+                                        Some(Left(MainFailure.clinrFailure()))
+                                    ? AssetImage("assets/images/flixlogo.jpeg")
+                                        as ImageProvider
+                                    : NetworkImage(
+                                        "$imageBaseUrl${state.downloads[0].posterPath}"),
                                 fit: BoxFit.fill)),
                         height: size.width * .32,
                         width: size.width * .25,
@@ -162,14 +162,13 @@ class Section2 extends StatelessWidget {
                     : Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            image:  DecorationImage(
-                       
-                                image:  state.optonFailureSuccess==Some(Left(MainFailure.clinrFailure())) ?
-                            AssetImage("assets/images/flixlogo.jpeg") as ImageProvider:
-                              NetworkImage(
-                                        "$imageBaseUrl${state.downloads[2].posterPath}")
-
-                                    , 
+                            image: DecorationImage(
+                                image: state.optonFailureSuccess ==
+                                        Some(Left(MainFailure.clinrFailure()))
+                                    ? AssetImage("assets/images/flixlogo.jpeg")
+                                        as ImageProvider
+                                    : NetworkImage(
+                                        "$imageBaseUrl${state.downloads[2].posterPath}"),
                                 fit: BoxFit.fill)),
                         height: size.width * .39,
                         width: size.width * .256,
@@ -190,7 +189,6 @@ class Section3 extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Column(
-      
       children: [
         const SizedBox(
           height: 70,
@@ -203,7 +201,8 @@ class Section3 extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           color: Colors.indigo[500],
-        ),khalfHeight,
+        ),
+        khalfHeight,
         MaterialButton(
           minWidth: size.width * .7,
           onPressed: () {},

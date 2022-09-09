@@ -6,36 +6,24 @@ import 'package:flix/domain/search/IsearchRepo.dart';
 import 'package:flix/domain/search/models/search/Search.dart';
 import 'package:injectable/injectable.dart';
 
-
-@LazySingleton(as:ISearchRepo )
-class SearchRepo implements ISearchRepo{
+@LazySingleton(as: ISearchRepo)
+class SearchRepo implements ISearchRepo {
   @override
-  Future<Either<MainFailure,SearchResp >> getSearchResults({required String query})async {
-    try{
-final Response response=await Dio(BaseOptions()).get(ApiEndPoints.search,queryParameters:{ 'query':query});
+  Future<Either<MainFailure, SearchResp>> getSearchResults(
+      {required String query}) async {
+    try {
+      final Response response = await Dio(BaseOptions())
+          .get(ApiEndPoints.search, queryParameters: {'query': query});
 
-
-
-
-if(response.statusCode==200||response.statusCode==201){
-  final result=SearchResp.fromJson(response.data);
- //print(result.results[0].title);
-  return Right(result);
-}
-else{
-  return const Left(MainFailure.serverFailure());
-}
-
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = SearchResp.fromJson(response.data);
+        //print(result.results[0].title);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } catch (e) {
+      return const Left(MainFailure.clinrFailure());
+    }
   }
-  catch(e){
-    
-    return const Left(MainFailure.clinrFailure());
-  }
-  
-   
-  }
-  
 }
-
-
-

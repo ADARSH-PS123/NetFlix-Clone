@@ -7,23 +7,25 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class SearchGrid extends StatelessWidget {
-  final  List<SearchResultData> resultList;
-  
-  const SearchGrid({Key? key,required this.resultList}) : super(key: key);
+  final List<SearchResultData> resultList;
+
+  const SearchGrid({Key? key, required this.resultList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      childAspectRatio: .9/1.25,mainAxisSpacing: 8,crossAxisSpacing: 8,
+      childAspectRatio: .9 / 1.25,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
       crossAxisCount: 3,
       children: List.generate(
-        resultList.length,
+          resultList.length,
           (index) => Container(
-                decoration: BoxDecoration(borderRadius:BorderRadius.circular(4),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
                     image: DecorationImage(
                         image: NetworkImage(
-                          "$imageBaseUrl${resultList[index].posterPath}"
-                        ),
+                            "$imageBaseUrl${resultList[index].posterPath}"),
                         fit: BoxFit.cover)),
               )),
     );
