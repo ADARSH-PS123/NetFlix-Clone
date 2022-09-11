@@ -28,44 +28,67 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       //check for the presence of data on the state first
       //first event-fetch the download list
       //show loading screen
-      if (state.idleList.isNotEmpty) {
-        return;
-      } else {
+   
+        
+       
         emit(state.copyWith(isLoading: true));
         //fetching the repo while loading
         final Either<MainFailure, List<Download>> downloadReopOptions =
-            await downloadRepo.getDownloadImages();
+            await downloadRepo.getDownloadImages(page: event.page);
         final result = downloadReopOptions.fold((MainFailure failure) {
-          return const SearchState(
-              isLoading: false, error: true, searchList: [], idleList: []);
+          return const SearchState(isScrolling: false,
+              isLoading: false, error: true, searchList: [], idleList: [], );
         }, (List<Download> downloads) {
           return SearchState(
               error: false,
               isLoading: false,
               idleList: downloads,
-              searchList: []);
+              searchList: [], isScrolling: false);
         });
 
         emit(result);
-      }
+      
     });
-    on<SearchMovieEvent>((event, emit) async {
-      emit(SearchState(
-          isLoading: true, error: false, searchList: [], idleList: []));
+
+
+    on<_SearchMovieEvent>((event, emit) async {
+      emit(const SearchState(
+          isLoading: true, error: false, searchList: [], idleList: [],isScrolling: false));
       final Either<MainFailure, SearchResp> searchRepoOptions =
           await iSearchRepo.getSearchResults(query: event.query);
 
       final result = searchRepoOptions.fold((MainFailure failure) {
-        return const SearchState(
+        return const SearchState(isScrolling: false,
             isLoading: false, error: true, searchList: [], idleList: []);
       }, (SearchResp searchResp) {
         return SearchState(
-            isLoading: false,
+            isLoading: false,isScrolling: false,
             error: false,
             searchList: searchResp.results,
             idleList: []);
       });
       emit(result);
+    });
+
+    on<_ScrollEvent>((event, emit) async{
+        
+        emit(SearchState(isLoading: false, error: false, searchList: [], isScrolling: true, idleList: state.idleList));
+        //fetching the repo while loading
+        final Either<MainFailure, List<Download>> downloadReopOptions =
+            await downloadRepo.getDownloadImages(page: event.page);
+        final result = downloadReopOptions.fold((MainFailure failure) {
+          return const SearchState(isScrolling: false,
+              isLoading: false, error: true, searchList: [], idleList: [], );
+        }, (List<Download> downloads) {
+          return SearchState(
+              error: false,isScrolling: false,
+              isLoading: false,
+              idleList:state.idleList+ downloads,
+              searchList: []);
+        });
+
+        emit(result);
+
     });
   }
 }

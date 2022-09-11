@@ -17,7 +17,7 @@ class ScreenNewAndHot extends StatelessWidget {
         length: 2,
         child: Column(children: [
           TopBar(
-              prefix: Text(
+              prefix: const Text(
             "New & Hot",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           )),
@@ -30,19 +30,19 @@ class ScreenNewAndHot extends StatelessWidget {
                   borderRadius: radius30,
                 ),
                 labelColor: backgroundColor,
-                labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                 unselectedLabelColor: Colors.white,
                 tabs: [
-                  Tab(
+                  const Tab(
                     text: "🍿 Comming Soon",
                   ),
-                  Tab(
+                  const Tab(
                     text: "👀 Everyone's Watching",
                   )
                 ]),
-          ),
-          Expanded(
-              child: TabBarView(
+          ),kheight2,
+          const Expanded(
+              child: const TabBarView(
                   children: [SreenCommingSoon(), EveryOnesWatching()]))
         ]),
       ),

@@ -12,27 +12,23 @@ class ScreenPAgeview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  
       BlocProvider.of<FastLaughBloc>(context)
           .add(const FastLaughEvent.starting());
     });
     return BlocBuilder<FastLaughBloc, FastLaughState>(
       builder: (context, state) {
-            
         if (state.videos.isNotEmpty) {
           return PageView.builder(
- scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext cxt,index){
-              return PageViewInheritedWidget(
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext cxt, index) {
+                return PageViewInheritedWidget(
                   widget: ScreenPageViewChaild(
                     key: Key(index.toString()),
                     index: index,
                   ),
                   video: state.videos[0].videos![index],
                 );
-            }
-             
-          )  ;
+              });
         } else if (state.isError) {
           return const Center(child: Text("Error occured"));
         } else {

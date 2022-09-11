@@ -1,6 +1,4 @@
-
 import 'package:json_annotation/json_annotation.dart';
-
 
 part 'videos.g.dart';
 
@@ -19,10 +17,9 @@ class Videos {
 
 @JsonSerializable()
 class Category {
-
   List<Video>? videos;
 
-  Category({ this.videos});
+  Category({this.videos});
 
   factory Category.fromJson(Map<String, dynamic> json) {
     return _$CategoryFromJson(json);
@@ -30,18 +27,16 @@ class Category {
 
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
+
 @JsonSerializable()
 class Video {
-  
   List<String>? sources;
-  
+
   String? thumb;
   String? title;
 
   Video({
- 
     this.sources,
-   
     this.thumb,
     this.title,
   });

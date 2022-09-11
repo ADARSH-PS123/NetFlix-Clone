@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flix/core/colors.dart';
 import 'package:flix/presentation/downloads/widgets/screen_downloads.dart';
 import 'package:flix/presentation/fastlaughs/screen_fast_lough.dart';
@@ -39,24 +41,24 @@ class Main_Page extends StatelessWidget {
                   notifierNavIndex.value = index;
                 },
                 showUnselectedLabels: true,
-                selectedFontSize: 12,
+                selectedFontSize: 10,
                 unselectedFontSize: 10,
                 selectedItemColor: Colors.white,
                 unselectedItemColor: Colors.grey,
-                items: [
+                items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: "Home"),
+                      icon: Icon(Icons.home,size: 20,), label: "Home"),
                   BottomNavigationBarItem(
                       icon: Icon(
                         Icons.collections,
                       ),
                       label: "New & Hot"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.emoji_emotions), label: "Fast Laughs"),
+                      icon: Icon(Icons.emoji_emotions,size: 20,), label: "Fast Laughs"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.search), label: "Search"),
+                      icon: Icon(Icons.search,size: 20,), label: "Search"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.download), label: "Downloads")
+                      icon: Icon(Icons.download,size: 20,), label: "Downloads")
                 ]);
           },
           valueListenable: notifierNavIndex,

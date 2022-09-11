@@ -18,39 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
+    required TResult Function(String page) initialize,
     required TResult Function(String query) search,
+    required TResult Function(String page) scroll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(SearchMovieEvent value) search,
+    required TResult Function(_SearchMovieEvent value) search,
+    required TResult Function(_ScrollEvent value) scroll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +83,7 @@ abstract class _$$_initializeCopyWith<$Res> {
   factory _$$_initializeCopyWith(
           _$_initialize value, $Res Function(_$_initialize) then) =
       __$$_initializeCopyWithImpl<$Res>;
+  $Res call({String page});
 }
 
 /// @nodoc
@@ -88,54 +95,80 @@ class __$$_initializeCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 
   @override
   _$_initialize get _value => super._value as _$_initialize;
+
+  @override
+  $Res call({
+    Object? page = freezed,
+  }) {
+    return _then(_$_initialize(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_initialize implements _initialize {
-  const _$_initialize();
+  const _$_initialize({required this.page});
+
+  @override
+  final String page;
 
   @override
   String toString() {
-    return 'SearchEvent.initialize()';
+    return 'SearchEvent.initialize(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_initialize);
+        (other.runtimeType == runtimeType &&
+            other is _$_initialize &&
+            const DeepCollectionEquality().equals(other.page, page));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(page));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_initializeCopyWith<_$_initialize> get copyWith =>
+      __$$_initializeCopyWithImpl<_$_initialize>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
+    required TResult Function(String page) initialize,
     required TResult Function(String query) search,
+    required TResult Function(String page) scroll,
   }) {
-    return initialize();
+    return initialize(page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
   }) {
-    return initialize?.call();
+    return initialize?.call(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize();
+      return initialize(page);
     }
     return orElse();
   }
@@ -144,7 +177,8 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(SearchMovieEvent value) search,
+    required TResult Function(_SearchMovieEvent value) search,
+    required TResult Function(_ScrollEvent value) scroll,
   }) {
     return initialize(this);
   }
@@ -153,7 +187,8 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
   }) {
     return initialize?.call(this);
   }
@@ -162,7 +197,8 @@ class _$_initialize implements _initialize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -173,33 +209,38 @@ class _$_initialize implements _initialize {
 }
 
 abstract class _initialize implements SearchEvent {
-  const factory _initialize() = _$_initialize;
+  const factory _initialize({required final String page}) = _$_initialize;
+
+  String get page;
+  @JsonKey(ignore: true)
+  _$$_initializeCopyWith<_$_initialize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SearchMovieEventCopyWith<$Res> {
-  factory _$$SearchMovieEventCopyWith(
-          _$SearchMovieEvent value, $Res Function(_$SearchMovieEvent) then) =
-      __$$SearchMovieEventCopyWithImpl<$Res>;
+abstract class _$$_SearchMovieEventCopyWith<$Res> {
+  factory _$$_SearchMovieEventCopyWith(
+          _$_SearchMovieEvent value, $Res Function(_$_SearchMovieEvent) then) =
+      __$$_SearchMovieEventCopyWithImpl<$Res>;
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$SearchMovieEventCopyWithImpl<$Res>
+class __$$_SearchMovieEventCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
-    implements _$$SearchMovieEventCopyWith<$Res> {
-  __$$SearchMovieEventCopyWithImpl(
-      _$SearchMovieEvent _value, $Res Function(_$SearchMovieEvent) _then)
-      : super(_value, (v) => _then(v as _$SearchMovieEvent));
+    implements _$$_SearchMovieEventCopyWith<$Res> {
+  __$$_SearchMovieEventCopyWithImpl(
+      _$_SearchMovieEvent _value, $Res Function(_$_SearchMovieEvent) _then)
+      : super(_value, (v) => _then(v as _$_SearchMovieEvent));
 
   @override
-  _$SearchMovieEvent get _value => super._value as _$SearchMovieEvent;
+  _$_SearchMovieEvent get _value => super._value as _$_SearchMovieEvent;
 
   @override
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_$SearchMovieEvent(
+    return _then(_$_SearchMovieEvent(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -210,8 +251,8 @@ class __$$SearchMovieEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SearchMovieEvent implements SearchMovieEvent {
-  const _$SearchMovieEvent({required this.query});
+class _$_SearchMovieEvent implements _SearchMovieEvent {
+  const _$_SearchMovieEvent({required this.query});
 
   @override
   final String query;
@@ -225,7 +266,7 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearchMovieEvent &&
+            other is _$_SearchMovieEvent &&
             const DeepCollectionEquality().equals(other.query, query));
   }
 
@@ -235,14 +276,15 @@ class _$SearchMovieEvent implements SearchMovieEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$$SearchMovieEventCopyWith<_$SearchMovieEvent> get copyWith =>
-      __$$SearchMovieEventCopyWithImpl<_$SearchMovieEvent>(this, _$identity);
+  _$$_SearchMovieEventCopyWith<_$_SearchMovieEvent> get copyWith =>
+      __$$_SearchMovieEventCopyWithImpl<_$_SearchMovieEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
+    required TResult Function(String page) initialize,
     required TResult Function(String query) search,
+    required TResult Function(String page) scroll,
   }) {
     return search(query);
   }
@@ -250,8 +292,9 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
   }) {
     return search?.call(query);
   }
@@ -259,8 +302,9 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String page)? initialize,
     TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -273,7 +317,8 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialize value) initialize,
-    required TResult Function(SearchMovieEvent value) search,
+    required TResult Function(_SearchMovieEvent value) search,
+    required TResult Function(_ScrollEvent value) scroll,
   }) {
     return search(this);
   }
@@ -282,7 +327,8 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
   }) {
     return search?.call(this);
   }
@@ -291,7 +337,8 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialize value)? initialize,
-    TResult Function(SearchMovieEvent value)? search,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -301,13 +348,152 @@ class _$SearchMovieEvent implements SearchMovieEvent {
   }
 }
 
-abstract class SearchMovieEvent implements SearchEvent {
-  const factory SearchMovieEvent({required final String query}) =
-      _$SearchMovieEvent;
+abstract class _SearchMovieEvent implements SearchEvent {
+  const factory _SearchMovieEvent({required final String query}) =
+      _$_SearchMovieEvent;
 
   String get query;
   @JsonKey(ignore: true)
-  _$$SearchMovieEventCopyWith<_$SearchMovieEvent> get copyWith =>
+  _$$_SearchMovieEventCopyWith<_$_SearchMovieEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ScrollEventCopyWith<$Res> {
+  factory _$$_ScrollEventCopyWith(
+          _$_ScrollEvent value, $Res Function(_$_ScrollEvent) then) =
+      __$$_ScrollEventCopyWithImpl<$Res>;
+  $Res call({String page});
+}
+
+/// @nodoc
+class __$$_ScrollEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$_ScrollEventCopyWith<$Res> {
+  __$$_ScrollEventCopyWithImpl(
+      _$_ScrollEvent _value, $Res Function(_$_ScrollEvent) _then)
+      : super(_value, (v) => _then(v as _$_ScrollEvent));
+
+  @override
+  _$_ScrollEvent get _value => super._value as _$_ScrollEvent;
+
+  @override
+  $Res call({
+    Object? page = freezed,
+  }) {
+    return _then(_$_ScrollEvent(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ScrollEvent implements _ScrollEvent {
+  const _$_ScrollEvent({required this.page});
+
+  @override
+  final String page;
+
+  @override
+  String toString() {
+    return 'SearchEvent.scroll(page: $page)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ScrollEvent &&
+            const DeepCollectionEquality().equals(other.page, page));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(page));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ScrollEventCopyWith<_$_ScrollEvent> get copyWith =>
+      __$$_ScrollEventCopyWithImpl<_$_ScrollEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String page) initialize,
+    required TResult Function(String query) search,
+    required TResult Function(String page) scroll,
+  }) {
+    return scroll(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String page)? initialize,
+    TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
+  }) {
+    return scroll?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String page)? initialize,
+    TResult Function(String query)? search,
+    TResult Function(String page)? scroll,
+    required TResult orElse(),
+  }) {
+    if (scroll != null) {
+      return scroll(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_initialize value) initialize,
+    required TResult Function(_SearchMovieEvent value) search,
+    required TResult Function(_ScrollEvent value) scroll,
+  }) {
+    return scroll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_initialize value)? initialize,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
+  }) {
+    return scroll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_initialize value)? initialize,
+    TResult Function(_SearchMovieEvent value)? search,
+    TResult Function(_ScrollEvent value)? scroll,
+    required TResult orElse(),
+  }) {
+    if (scroll != null) {
+      return scroll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ScrollEvent implements SearchEvent {
+  const factory _ScrollEvent({required final String page}) = _$_ScrollEvent;
+
+  String get page;
+  @JsonKey(ignore: true)
+  _$$_ScrollEventCopyWith<_$_ScrollEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -316,6 +502,7 @@ mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get error => throw _privateConstructorUsedError;
   List<SearchResultData> get searchList => throw _privateConstructorUsedError;
+  bool get isScrolling => throw _privateConstructorUsedError;
   List<Download> get idleList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -332,6 +519,7 @@ abstract class $SearchStateCopyWith<$Res> {
       {bool isLoading,
       bool error,
       List<SearchResultData> searchList,
+      bool isScrolling,
       List<Download> idleList});
 }
 
@@ -348,6 +536,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
     Object? isLoading = freezed,
     Object? error = freezed,
     Object? searchList = freezed,
+    Object? isScrolling = freezed,
     Object? idleList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -363,6 +552,10 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
           ? _value.searchList
           : searchList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
+      isScrolling: isScrolling == freezed
+          ? _value.isScrolling
+          : isScrolling // ignore: cast_nullable_to_non_nullable
+              as bool,
       idleList: idleList == freezed
           ? _value.idleList
           : idleList // ignore: cast_nullable_to_non_nullable
@@ -382,6 +575,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
       {bool isLoading,
       bool error,
       List<SearchResultData> searchList,
+      bool isScrolling,
       List<Download> idleList});
 }
 
@@ -400,6 +594,7 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? error = freezed,
     Object? searchList = freezed,
+    Object? isScrolling = freezed,
     Object? idleList = freezed,
   }) {
     return _then(_$_SearchState(
@@ -415,6 +610,10 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
           ? _value._searchList
           : searchList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
+      isScrolling: isScrolling == freezed
+          ? _value.isScrolling
+          : isScrolling // ignore: cast_nullable_to_non_nullable
+              as bool,
       idleList: idleList == freezed
           ? _value._idleList
           : idleList // ignore: cast_nullable_to_non_nullable
@@ -430,6 +629,7 @@ class _$_SearchState implements _SearchState {
       {required this.isLoading,
       required this.error,
       required final List<SearchResultData> searchList,
+      required this.isScrolling,
       required final List<Download> idleList})
       : _searchList = searchList,
         _idleList = idleList;
@@ -445,6 +645,8 @@ class _$_SearchState implements _SearchState {
     return EqualUnmodifiableListView(_searchList);
   }
 
+  @override
+  final bool isScrolling;
   final List<Download> _idleList;
   @override
   List<Download> get idleList {
@@ -454,7 +656,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isLoading: $isLoading, error: $error, searchList: $searchList, idleList: $idleList)';
+    return 'SearchState(isLoading: $isLoading, error: $error, searchList: $searchList, isScrolling: $isScrolling, idleList: $idleList)';
   }
 
   @override
@@ -466,6 +668,8 @@ class _$_SearchState implements _SearchState {
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality()
                 .equals(other._searchList, _searchList) &&
+            const DeepCollectionEquality()
+                .equals(other.isScrolling, isScrolling) &&
             const DeepCollectionEquality().equals(other._idleList, _idleList));
   }
 
@@ -475,6 +679,7 @@ class _$_SearchState implements _SearchState {
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(_searchList),
+      const DeepCollectionEquality().hash(isScrolling),
       const DeepCollectionEquality().hash(_idleList));
 
   @JsonKey(ignore: true)
@@ -488,6 +693,7 @@ abstract class _SearchState implements SearchState {
       {required final bool isLoading,
       required final bool error,
       required final List<SearchResultData> searchList,
+      required final bool isScrolling,
       required final List<Download> idleList}) = _$_SearchState;
 
   @override
@@ -496,6 +702,8 @@ abstract class _SearchState implements SearchState {
   bool get error;
   @override
   List<SearchResultData> get searchList;
+  @override
+  bool get isScrolling;
   @override
   List<Download> get idleList;
   @override

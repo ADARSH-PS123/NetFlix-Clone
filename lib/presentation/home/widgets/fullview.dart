@@ -1,12 +1,11 @@
 import 'package:flix/core/colors.dart';
-import 'package:flix/core/constants.dart';
-import 'package:flix/presentation/home/screen_home.dart';
+
 import 'package:flix/presentation/widgets_common/custom_icon.dart';
-import 'package:flix/presentation/widgets_common/topbar.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+
 
 import '../../downloads/widgets/screen_downloads.dart';
 

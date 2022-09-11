@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:flix/domain/core/apiEndPoints.dart';
 
@@ -24,15 +22,11 @@ class VideoRepo implements IvideoRepo {
 
         final result = Videos.fromJson(data);
 
-       
-            
-
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-    
       return const Left(MainFailure.clinrFailure());
     }
   }

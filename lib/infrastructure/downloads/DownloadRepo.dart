@@ -11,13 +11,13 @@ import 'package:injectable/injectable.dart';
 
 class Repo implements DownloadRepo {
   @override
-  Future<Either<MainFailure, List<Download>>> getDownloadImages() async {
+  Future<Either<MainFailure, List<Download>>> getDownloadImages({ String page='&page=1'}) async {
     try {
       final Response response =
-          await Dio(BaseOptions()).get(ApiEndPoints.downloads);
+          await Dio(BaseOptions(sendTimeout: 4)).get(ApiEndPoints.downloads+page);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        print(response.realUri);
+      
         final downloadList = (response.data['results'] as List).map((e) {
           return Download.fromJson(e);
         }).toList();
@@ -27,6 +27,7 @@ class Repo implements DownloadRepo {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
+     
       return const Left(MainFailure.clinrFailure());
     }
   }

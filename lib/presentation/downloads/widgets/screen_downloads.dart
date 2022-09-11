@@ -96,7 +96,7 @@ class Section2 extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       BlocProvider.of<DownloadsBloc>(context)
-          .add(const DownloadsEvent.getDownloadImages());
+          .add(const DownloadsEvent.getDownloadImages(page: "page=1"));
     });
 
     final size = MediaQuery.of(context).size;
@@ -120,7 +120,7 @@ class Section2 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                               image: DecorationImage(
                                   image: state.optonFailureSuccess ==
-                                          Some(Left(MainFailure.clinrFailure()))
+                                          const Some(Left(MainFailure.clinrFailure()))
                                       ? const AssetImage(
                                               "assets/images/flixlogo.jpeg")
                                           as ImageProvider
@@ -142,8 +142,8 @@ class Section2 extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                             image: DecorationImage(
                                 image: state.optonFailureSuccess ==
-                                        Some(Left(MainFailure.clinrFailure()))
-                                    ? AssetImage("assets/images/flixlogo.jpeg")
+                                        const Some(Left(MainFailure.clinrFailure()))
+                                    ? const AssetImage("assets/images/flixlogo.jpeg")
                                         as ImageProvider
                                     : NetworkImage(
                                         "$imageBaseUrl${state.downloads[0].posterPath}"),
@@ -164,8 +164,8 @@ class Section2 extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                             image: DecorationImage(
                                 image: state.optonFailureSuccess ==
-                                        Some(Left(MainFailure.clinrFailure()))
-                                    ? AssetImage("assets/images/flixlogo.jpeg")
+                                        const Some(const Left(MainFailure.clinrFailure()))
+                                    ? const AssetImage("assets/images/flixlogo.jpeg")
                                         as ImageProvider
                                     : NetworkImage(
                                         "$imageBaseUrl${state.downloads[2].posterPath}"),

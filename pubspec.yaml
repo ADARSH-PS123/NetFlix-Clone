@@ -29,6 +29,7 @@ environment:
 dependencies:
   bloc: ^8.1.0
   bordered_text: ^2.0.0
+  cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^4.0.6
@@ -40,6 +41,7 @@ dependencies:
   google_fonts: ^3.0.1
   http: ^0.13.5
   injectable: ^1.5.3
+  intl: ^0.17.0
   json_annotation: ^4.6.0
   json_serializable: ^6.3.1
   share_plus: ^4.1.0

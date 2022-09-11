@@ -1,10 +1,8 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flix/core/colors.dart';
-import 'package:flix/presentation/home/widgets/horizondal_card.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 import '../../downloads/widgets/screen_downloads.dart';
 
@@ -36,7 +34,7 @@ class NumberCard extends StatelessWidget {
                                   image: DecorationImage(
                                       image: NetworkImage(posters[2]),
                                       fit: BoxFit.fill)),
-                              height: size.height * .26,
+                              height: size.height * .2,
                               width: size.width * .26,
                             ),
                           ],
