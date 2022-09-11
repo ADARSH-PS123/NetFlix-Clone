@@ -11,9 +11,14 @@ import '../widgets_common/search_about.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({Key? key}) : super(key: key);
 
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -31,13 +36,13 @@ class ScreenHome extends StatelessWidget {
                   final direction = notification.direction;
                   if (direction == ScrollDirection.idle) {
                     scrollNotifier.value = true;
-                    print("true");
+               
                   } else if (direction == ScrollDirection.forward) {
                     scrollNotifier.value = true;
-                    print("true");
+                
                   } else {
                     scrollNotifier.value = false;
-                    print("false");
+                  
                   }
 
                   return true;
@@ -61,9 +66,11 @@ class ScreenHome extends StatelessWidget {
             ),
             scrollNotifier.value
                 ? AnimatedContainer(
-                    duration: Duration(milliseconds: 2000),
+                 
+                    duration: const Duration(seconds: 0),
                     color: backgroundColor.withOpacity(.35),
                     height: MediaQuery.of(context).size.height * .11,
+                    width: double.infinity,
                     child: Stack(
                       children: [
                         TopBar(

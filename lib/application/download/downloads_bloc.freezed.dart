@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DownloadsEvent {
+  String get page => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getDownloadImages,
+    required TResult Function(String page) getDownloadImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getDownloadImages,
+    TResult Function(String page)? getDownloadImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getDownloadImages,
+    TResult Function(String page)? getDownloadImages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$DownloadsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DownloadsEventCopyWith<DownloadsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ abstract class $DownloadsEventCopyWith<$Res> {
   factory $DownloadsEventCopyWith(
           DownloadsEvent value, $Res Function(DownloadsEvent) then) =
       _$DownloadsEventCopyWithImpl<$Res>;
+  $Res call({String page});
 }
 
 /// @nodoc
@@ -65,13 +71,28 @@ class _$DownloadsEventCopyWithImpl<$Res>
   final DownloadsEvent _value;
   // ignore: unused_field
   final $Res Function(DownloadsEvent) _then;
+
+  @override
+  $Res call({
+    Object? page = freezed,
+  }) {
+    return _then(_value.copyWith(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_GetDownloadImagesCopyWith<$Res> {
+abstract class _$$_GetDownloadImagesCopyWith<$Res>
+    implements $DownloadsEventCopyWith<$Res> {
   factory _$$_GetDownloadImagesCopyWith(_$_GetDownloadImages value,
           $Res Function(_$_GetDownloadImages) then) =
       __$$_GetDownloadImagesCopyWithImpl<$Res>;
+  @override
+  $Res call({String page});
 }
 
 /// @nodoc
@@ -84,51 +105,75 @@ class __$$_GetDownloadImagesCopyWithImpl<$Res>
 
   @override
   _$_GetDownloadImages get _value => super._value as _$_GetDownloadImages;
+
+  @override
+  $Res call({
+    Object? page = freezed,
+  }) {
+    return _then(_$_GetDownloadImages(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_GetDownloadImages implements _GetDownloadImages {
-  const _$_GetDownloadImages();
+  const _$_GetDownloadImages({required this.page});
+
+  @override
+  final String page;
 
   @override
   String toString() {
-    return 'DownloadsEvent.getDownloadImages()';
+    return 'DownloadsEvent.getDownloadImages(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetDownloadImages);
+        (other.runtimeType == runtimeType &&
+            other is _$_GetDownloadImages &&
+            const DeepCollectionEquality().equals(other.page, page));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(page));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_GetDownloadImagesCopyWith<_$_GetDownloadImages> get copyWith =>
+      __$$_GetDownloadImagesCopyWithImpl<_$_GetDownloadImages>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getDownloadImages,
+    required TResult Function(String page) getDownloadImages,
   }) {
-    return getDownloadImages();
+    return getDownloadImages(page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getDownloadImages,
+    TResult Function(String page)? getDownloadImages,
   }) {
-    return getDownloadImages?.call();
+    return getDownloadImages?.call(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getDownloadImages,
+    TResult Function(String page)? getDownloadImages,
     required TResult orElse(),
   }) {
     if (getDownloadImages != null) {
-      return getDownloadImages();
+      return getDownloadImages(page);
     }
     return orElse();
   }
@@ -163,7 +208,15 @@ class _$_GetDownloadImages implements _GetDownloadImages {
 }
 
 abstract class _GetDownloadImages implements DownloadsEvent {
-  const factory _GetDownloadImages() = _$_GetDownloadImages;
+  const factory _GetDownloadImages({required final String page}) =
+      _$_GetDownloadImages;
+
+  @override
+  String get page;
+  @override
+  @JsonKey(ignore: true)
+  _$$_GetDownloadImagesCopyWith<_$_GetDownloadImages> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
